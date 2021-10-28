@@ -1,7 +1,8 @@
 jQuery CDN (google)
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
-Spring Autowired용 xml <beans>
+Spring 
+  - Autowired용 xml <beans>
 	<beans 
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -12,4 +13,13 @@ Spring Autowired용 xml <beans>
 	<!-- 어노테이션을 이용한 DI를 허용하는 태그 -->
 	<context:annotation-config />
 	
+  - Logger설정 in Controller (log4J 라이브러리 사용)
+  	in member field	
+  	private static final Logger logger = LoggerFactory.getLogger(ParamController.class);
+	
+	in src/main/resources/log4j.xml
+	<!-- Application Loggers -->
+	<logger name="package name">
+		<level value="info" />
+	</logger>
 	
