@@ -1,0 +1,9 @@
+Spring Controller Class making
+
+1. Create normal java class file
+2. Add @Controller prior to class declaration
+  Add package to <component-scan>
+3. Create normal method
+4. Add @RequestMapping prior to method
+  @RequestMapping(value="url", method=RequestMethod.GET,POST etc.)
+  value must start with '/'
