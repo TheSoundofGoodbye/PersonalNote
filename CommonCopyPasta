@@ -47,3 +47,57 @@ Spring
 			<artifactId>ojdbc6</artifactId>
 			<version>12.1.0.2</version>
 		</dependency>
+		
+   - MyBatis Log4jdbc, 
+    	in root-context.xml 
+    	<!-- 마이바티스로깅 -->
+	<!-- 	-> 마이바티스 dataSource의 프록시(Proxy) -->
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<!-- 프록시 대상 DB DataSource설정하기 (원본 DB 정보) -->
+		<constructor-arg ref="dataSourceSpied" />
+		
+		<!-- 로그 출력 양식(포멧) 설정 -->
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="sqlPrefix" value="SQL:::" />
+			</bean>
+		</property>
+	</bean>
+	
+	in log4j.xml
+	<!-- Log4jdbc logger 설정 -->
+	<logger name="jdbc.connection"><level value="warn" /></logger>
+	<logger name="jdbc.audit"><level value="warn" /></logger>
+	<logger name="jdbc.sqlonly"><level value="warn" /></logger>
+	<logger name="jdbc.sqltiming"><level value="info" /></logger>
+	<logger name="jdbc.resultset"><level value="warn" /></logger>
+	<logger name="jdbc.resultsettable"><level value="info" /></logger>
+	<logger name="org.mybatis"><level value="warn" /></logger>
+
+   - Spring UTF-8 config
+   	<!-- 한글 인코딩 설정 필터 : UTF-8 -->
+	<!-- web.xml 파일의 첫 부분에 작성한다 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    - Interceptor 설정 
+    	in servlet-context.xml
+	<interceptors>
+		<interceptor>
+			<mapping path="/intercepter/admin/**"/>
+			<beans:bean class="interceptor.interceptor.AdminInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
