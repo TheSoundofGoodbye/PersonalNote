@@ -101,3 +101,10 @@ Spring
 		</interceptor>
 	</interceptors>
 	
+    - 스프링 파일업로드 클래스 
+	org.springframework.web.multipart.commons.CommonsMultipartResolver
+	
+    - 파일이름 랜덤 생성 
+	String filename = fileupload.getOriginalFilename(); //원본 파일명
+	filename += UUID.randomUUID().toString().split("-")[4]; //UUID 추가
+	
