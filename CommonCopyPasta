@@ -4,6 +4,9 @@ JSTL core
 jQuery CDN (google)
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
+JSON
+  
+  
 Spring 
   - Autowired용 xml <beans>
 	<beans 
@@ -107,4 +110,19 @@ Spring
     - 파일이름 랜덤 생성 
 	String filename = fileupload.getOriginalFilename(); //원본 파일명
 	filename += UUID.randomUUID().toString().split("-")[4]; //UUID 추가
+    
+    - Spring x JSON
+   	TODO
+
+    - Transaction
+    	in servlet-contextxml, <beans:bean> add
+	  xmlns:tx="http://www.springframework.org/schema/tx"
+	in xsi:schemaLocation, add   
+	  http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd
+	add
+	  <tx:annotation-driven/>
+	
+	in root-context.xml
+	  
+    	
 	
