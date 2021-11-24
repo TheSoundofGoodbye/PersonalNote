@@ -1,6 +1,9 @@
 Reset Password Module (Spring)
 =====================
 
+Using javax.mail and Spring Framework
+(not Spring boot)
+
 ### Structure
 1. Input Email 
 2. Send token 
