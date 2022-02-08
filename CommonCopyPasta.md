@@ -139,6 +139,9 @@ in root-context.xml, add
 <tx:annotation-driven/>
 ```
   
-	  
+- Filtering alphabets only
+```
+let isLetter = /^[a-z]$/i.test(e.key);
+```
     	
 	
