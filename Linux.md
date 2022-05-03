@@ -1,7 +1,7 @@
 1. CentO 설치 시 
  - nmtui 로 네트워크 설정
  - EPEL 패키지 설치 yum install epel-release
-
+---
 2. epel-release 설치 시 생기는 문제 
  - 패키지 설치 후 yum 이 repositories에 접근을 못하는 일이 발생
  - vi 등 에디터를 이용하여 /etc/yum.repo.d/epel.repo 를 열어보면
